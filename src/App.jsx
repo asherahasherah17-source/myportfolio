@@ -1,14 +1,17 @@
+import React from 'react';
+import './App.css';
 function App() {
+  const[page, setPage] = React.useState('home');
   return (
     <div className="App">
       <header className="header">
         <nav className="navbar">
           <h1>Asherah</h1>
           <ul className="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><button onClick={() => setPage('home')}>Home</button></li>
+            <li><button onClick={() => setPage('about')}>About</button></li>
+            <li><button onClick={() => setPage('projects')}>Projects</button></li>
+            <li><button onClick={() => setPage('contact')}>Contact</button></li>
           </ul>
         </nav>
       </header>
@@ -18,12 +21,13 @@ function App() {
         <p>I'm a passionate developer building amazing web experiences</p>
       </section>
 
-      <section id="about" className="about">
+      {page === 'about' && <section id="about" className="about">
         <h2>About Me</h2>
         <p>I love creating clean, functional code and learning new technologies.</p>
       </section>
+      }
 
-      <section id="projects" className="projects">
+      {page === 'projects' && <section id="projects" className="projects">
         <h2>My Projects</h2>
         <div className="project-grid">
           <div className="project-card">
@@ -40,12 +44,15 @@ function App() {
           </div>
         </div>
       </section>
+      )}
 
-      <footer id="contact" className="footer">
+      {page === 'contact' && 
+        <footer id="contact" className='footer'>
         <h2>Get In Touch</h2>
         <p>Email: asherah@example.com</p>
         <p>&copy; 2026 Asherah. All rights reserved.</p>
       </footer>
+   )}
     </div>
   );
 }
